@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_orange">#FF852F</color>
+    <color name="red">#F60808</color>
+    <color name="blue">#112AD1</color>
+    <color name="edTLogIn">#E1D5CC</color>
+</resources>
