@@ -4,6 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogUp.LogUp">
+    tools:context=".LogUp.LogUp"
+    android:padding="25dp">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/rounded_back"
+        android:elevation="16dp"
+        android:orientation="vertical"
+        android:padding="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingEnd="15dp"
+            android:text="Usuario"
+            android:textColor="@color/white"
+            android:textSize="20dp"></TextView>
+
+        <EditText
+            android:id="@+id/edtLogUpUserName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:hint="Nombre de usuario*"
+            android:padding="10dp"
+            android:textColor="@color/main_orange"
+            android:textColorHint="@color/main_orange"></EditText>
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:hint="Correo*"
+            android:padding="10dp"
+            android:textColor="@color/main_orange"
+            android:textColorHint="@color/main_orange"></EditText>
+
+        <EditText
+            android:id="@+id/edtContrasenia"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:hint="Contraseña*"
+            android:padding="10dp"
+            android:textColor="@color/main_orange"
+            android:textColorHint="@color/main_orange"></EditText>
+
+        <EditText
+            android:id="@+id/edtReContrasenia"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:hint="Repita la contraseña*"
+            android:padding="10dp"
+            android:textColor="@color/main_orange"
+            android:textColorHint="@color/main_orange"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_back"
+        android:elevation="16dp"
+        android:orientation="vertical"
+        android:padding="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingEnd="15dp"
+            android:text="Mascota"
+            android:textColor="@color/white"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo mascota:"
+            android:textColor="@color/white"></TextView>
+
+        <Spinner
+            android:id="@+id/SpinnerTipoMascota"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:padding="10dp"></Spinner>
+
+        <EditText
+            android:id="@+id/edtNombreMascota"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/rounded_elements"
+            android:hint="Nombre Mascota*"
+            android:padding="10dp"
+            android:textColorHint="@color/main_orange"></EditText>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="78dp"
+            android:layout_height="64dp"
+            android:src="@android:drawable/btn_star" />
+
+        <Button
+            android:id="@+id/BtnEspecificaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/white"
+            android:text="Especificaciones"
+            android:textColor="@color/main_orange"></Button>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCrearCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/blue"
+        android:text="Crear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

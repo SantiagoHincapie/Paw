@@ -1,0 +1,14 @@
+package com.example.paws.DataBase
+
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
+
+object DataBaseConection
+{
+    var db=Firebase.firestore
+
+    fun instanciaDB(): FirebaseFirestore {
+        return this.db
+    }
+}
