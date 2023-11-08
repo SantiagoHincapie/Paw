@@ -40,6 +40,8 @@ class LogIn : AppCompatActivity() {
         var usuario:String=this.edtUsuario.text.toString()
         var contrsenia:String=this.edtContrasenia.text.toString()
 
+        //TODO: Hacer una peticion a la base de datos, para ver si realmente existe la cuenta
+
         if (usuario.length==0&&contrsenia.length==0)
         {
             Toast.makeText(this,"Ingrese usuario/contraseña",Toast.LENGTH_LONG).show()

@@ -12,7 +12,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/rounded_back"
         android:elevation="16dp"
         android:orientation="vertical"
@@ -79,7 +79,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rounded_back"
         android:elevation="16dp"
         android:orientation="vertical"
@@ -122,10 +122,11 @@
             android:textColorHint="@color/main_orange"></EditText>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imageButtonFotoMascota"
             android:layout_width="78dp"
             android:layout_height="64dp"
-            android:src="@android:drawable/btn_star" />
+            android:src="@drawable/baseline_camera_alt_24"
+            android:background="@drawable/rounded_back"/>
 
         <Button
             android:id="@+id/BtnEspecificaciones"
@@ -145,6 +146,7 @@
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/blue"
         android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout2"

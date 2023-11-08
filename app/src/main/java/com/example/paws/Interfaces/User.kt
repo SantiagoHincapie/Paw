@@ -7,4 +7,5 @@ interface User
     var userName:String
     var email:String
     var contrasenia:String
+    var mascota:Mascota
 }

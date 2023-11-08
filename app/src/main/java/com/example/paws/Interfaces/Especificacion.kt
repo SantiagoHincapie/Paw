@@ -6,4 +6,5 @@ interface Especificacion
     var raza:String
     var personalidad:String
     var concentrado:String
+
 }

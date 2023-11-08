@@ -7,5 +7,5 @@ enum class TipoMascota (var v:String) {
     VACA("Vaca"),
     ROEDOR("Roedor"),
     CABALLO("Caballo"),
-    MINIPIG("MiniPig")
+    MINIPIG("MiniPig");
 }
