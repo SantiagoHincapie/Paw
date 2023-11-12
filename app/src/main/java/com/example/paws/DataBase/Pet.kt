@@ -14,13 +14,13 @@ class Pet: Mascota {
     override var especificaciones: Especificacion
     override var nombre: String
     override var foto: String
-    override var historialVacuna: List<HistorialVacuna>
+    override var historialVacuna: HistorialVacuna
     constructor(
         tipoMascota: String,
         especificaciones: Especificacion,
         nombre: String,
         foto: String,
-        historialVacuna: List<HistorialVacuna>
+        historialVacuna: HistorialVacuna
     ) {
         this.tipoMascota=tipoMascota
         this.especificaciones=especificaciones

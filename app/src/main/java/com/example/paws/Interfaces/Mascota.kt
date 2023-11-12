@@ -6,5 +6,5 @@ interface Mascota
     var especificaciones:Especificacion
     var nombre:String
     var foto:String
-    var historialVacuna:List<HistorialVacuna>
+    var historialVacuna:HistorialVacuna
 }
