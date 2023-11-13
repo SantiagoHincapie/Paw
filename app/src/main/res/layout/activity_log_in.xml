@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/paws__1_" />
+        app:srcCompat="@drawable/paws__1_"
+        />
 
     <EditText
         android:id="@+id/editTextLogIn"
@@ -23,12 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:hint="Usuario/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+
+        />
 
     <EditText
         android:id="@+id/editTextContrasenia"
@@ -66,8 +69,6 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/buttonLogIn"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogIn"
-        android:clickable="true"
-        android:onClick="irARegistro"
-        />
+        android:clickable="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "378235187308",
+    "project_id": "pawsapp-aa37a",
+    "storage_bucket": "pawsapp-aa37a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378235187308:android:bfa6a8e4ca826427492849",
+        "android_client_info": {
+          "package_name": "com.example.paws"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALt2C99CGqRBKR29BCk-6llXEwv7Gr2tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

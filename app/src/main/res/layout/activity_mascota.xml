@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogUp.LogUp"
+    tools:context=".LogUp.MascotaForm"
     android:padding="25dp">
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -27,57 +26,65 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:paddingEnd="15dp"
-            android:text="Usuario"
+            android:text="Mascota"
             android:textColor="@color/white"
             android:textSize="20dp"></TextView>
 
         <EditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtNombreMascota"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@drawable/rounded_elements"
             android:inputType="textEmailAddress"
-            android:hint="Correo*"
+            android:hint="Nombre mascota*"
             android:padding="10dp"
             android:textColor="@color/main_orange"
             android:textColorHint="@color/main_orange"></EditText>
-
-        <EditText
-            android:id="@+id/edtContrasenia"
+        <Spinner
+            android:id="@+id/SpinnerTipoMascota"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@drawable/rounded_elements"
-            android:hint="Contraseña*"
+            android:inputType="textEmailAddress"
+            android:hint="Nombre mascota*"
             android:padding="10dp"
             android:textColor="@color/main_orange"
-            android:textColorHint="@color/main_orange"
-            android:inputType="textPassword"></EditText>
+            android:textColorHint="@color/main_orange"></Spinner>
 
-        <EditText
-            android:id="@+id/edtReContrasenia"
-            android:layout_width="250dp"
+        <ImageButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/baseline_camera_enhance_24"
+            android:background="@color/main_orange"
             android:layout_margin="5dp"
-            android:background="@drawable/rounded_elements"
-            android:hint="Repita la contraseña*"
             android:padding="10dp"
+            ></ImageButton>
+
+        <Button
+            android:id="@+id/btnAddEspecificaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Especificacionbes"
+            android:backgroundTint="@color/white"
             android:textColor="@color/main_orange"
-            android:textColorHint="@color/main_orange"
-            android:inputType="textPassword"></EditText>
+            ></Button>
+
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnCrearCuenta"
+        android:id="@+id/btnAddMascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="172dp"
         android:backgroundTint="@color/blue"
         android:text="Crear"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
