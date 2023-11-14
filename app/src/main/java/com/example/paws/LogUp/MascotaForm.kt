@@ -67,8 +67,11 @@ class MascotaForm : AppCompatActivity() {
         var petType=spinnerPetType.selectedItem.toString()
 
         addPet(petName,petType,0,"","","")
-        val intent:Intent=Intent(this,Home::class.java)
+        val intent:Intent=Intent(this,Home::class.java).apply {
+
+        }
         startActivity(intent)
+        finish()
     }
     private fun addPet(petName:String,petType:String,petAge:Int?,petRace:String?,petPersonality:String?,concentrado:String?) {
         //TODO: Crear la mascota en firestore
