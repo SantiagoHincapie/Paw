@@ -22,6 +22,7 @@ class Home : AppCompatActivity() {
 
     //Instancia de la base de datos
     private val db= FirebaseFirestore.getInstance()
+    private var documentList=ArrayList<String>()
 
 
     lateinit var userEmail:String
@@ -55,20 +56,28 @@ class Home : AppCompatActivity() {
     }
 
     private fun myPets(petsRef: CollectionReference) {
+        //Aca se muestran las moscotas que se tiene
         petsRef.get()
             .addOnCompleteListener(OnCompleteListener <QuerySnapshot> { task ->
                 if (task.isSuccessful){
-                    val documentList=ArrayList<String>()
+
 
                     for (doc in task.result!!){
                         val docId=doc.id
-                        documentList.add(docId)
+                        this.documentList.add(docId)
                     }
 
                     val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,documentList)
-                    lvPets.adapter=adapter
+                    this.lvPets.adapter=adapter
                 }
             })
+        lvPets.setOnItemClickListener { parent, view, position, id ->
+            val intent:Intent=Intent(this,HomePerfilMascota::class.java).apply {
+                putExtra("userEmail",userEmail)
+                putExtra("petName",documentList[position])
+            }
+            startActivity(intent)
+        }
     }
 
     private fun newPet() {

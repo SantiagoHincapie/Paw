@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import com.example.paws.Home.Home
 import com.example.paws.Interfaces.TipoMascota
 import com.example.paws.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -54,6 +55,7 @@ class MascotaForm : AppCompatActivity() {
         val intent:Intent=Intent(this,LogUpEspecificaciones::class.java).apply {
             putExtra("petName",petName)
             putExtra("petType",petType)
+            putExtra("emailUser",emailUser)
             //TODO:falta la foto
         }
         startActivity(intent)
@@ -64,7 +66,9 @@ class MascotaForm : AppCompatActivity() {
         var petName:String=edtPetName.text.toString()
         var petType=spinnerPetType.selectedItem.toString()
 
-        addPet(petName,petType,null,null,null,null)
+        addPet(petName,petType,0,"","","")
+        val intent:Intent=Intent(this,Home::class.java)
+        startActivity(intent)
     }
     private fun addPet(petName:String,petType:String,petAge:Int?,petRace:String?,petPersonality:String?,concentrado:String?) {
         //TODO: Crear la mascota en firestore

@@ -6,14 +6,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.paws.R
+import com.google.firebase.firestore.FirebaseFirestore
 
-class LogUpEspecificaciones : AppCompatActivity() {
+ class LogUpEspecificaciones : AppCompatActivity() {
 
     lateinit var edtPetAge:EditText
     lateinit var edtRace:EditText
     lateinit var edtPersonality:EditText
     lateinit var edtConcentrado:EditText
     lateinit var btnAddPet:Button
+    lateinit var emailUser:String
+
+    private val db= FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,8 @@ class LogUpEspecificaciones : AppCompatActivity() {
         edtPersonality=findViewById(R.id.edtPersonalidadMascota)
         edtConcentrado=findViewById(R.id.edtConcentradoMascota)
         btnAddPet=findViewById(R.id.btnAddPetEspecifications)
+
+        emailUser=intent.getStringExtra("emailUser").toString()
 
         btnAddPet.setOnClickListener {
             newPet()
@@ -51,5 +57,15 @@ class LogUpEspecificaciones : AppCompatActivity() {
 
     private fun addPet(petName:String,petType:String,petAge:Int?,petRace:String?,petPersonality:String?,concentrado:String?) {
         //TODO: Crear la mascota en firestore
+        db.collection("users").document(emailUser)
+            .collection("pets").document(petName).set(
+                hashMapOf(
+                    "petType" to petType,
+                    "petAge" to petAge,
+                    "petRace" to petRace,
+                    "petPersonality" to petPersonality,
+                    "concentrado" to concentrado
+                )
+            )
     }
 }
