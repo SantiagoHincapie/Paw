@@ -38,30 +38,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="68dp"
         app:fab_addButtonColorNormal="@color/main_orange"
-        app:fab_labelStyle="@style/custom_floatings_buttons">
+        app:fab_labelStyle="@style/custom_floatings_buttons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingButtonVacuna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/main_orange"
-            app:fab_addButtonColorNormal="@color/main_orange"
-            app:fab_icon="@drawable/vacunas"
-            ></com.getbase.floatingactionbutton.FloatingActionButton>
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingHistorialCompleto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/main_orange"
-            app:fab_icon="@drawable/historial_completo"></com.getbase.floatingactionbutton.FloatingActionButton>
+            app:fab_colorNormal="@color/main_orange"
+            app:fab_icon="@drawable/vacunas"></com.getbase.floatingactionbutton.FloatingActionButton>
+
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingUltimaVisita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/main_orange"
+            app:fab_colorNormal="@color/main_orange"
             app:fab_icon="@drawable/visita"></com.getbase.floatingactionbutton.FloatingActionButton>
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
@@ -194,5 +188,18 @@
         android:backgroundTint="@color/main_orange"
         app:layout_constraintStart_toStartOf="@+id/buttonVacunas"
         app:layout_constraintTop_toBottomOf="@+id/buttonVacunas" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btnNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_menu"
+        android:background="@color/main_orange">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

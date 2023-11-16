@@ -3,9 +3,11 @@ package com.example.paws.Home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.paws.LogUp.EditarEspecificaciones
 import com.example.paws.LogUp.LogUpEspecificaciones
 import com.example.paws.R
 import com.google.firebase.firestore.FirebaseFirestore
@@ -52,6 +54,7 @@ class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
         btnVacunas=findViewById(R.id.buttonVacunas)
         btnHistorial=findViewById(R.id.buttonHistorialCompleto)
 
+        Log.i("User email en el homeHistorial", "${userEmail}")
 
         especificaciones()
 
@@ -71,10 +74,10 @@ class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
 
     private fun editarEspecificaciones() {
 
-        //TODO:
-        val intent=Intent(this,LogUpEspecificaciones::class.java).apply {
+        val intent=Intent(this,EditarEspecificaciones::class.java).apply {
             putExtra("petName",petName)
             putExtra("emailUser",userEmail)
+            putExtra("a",titulo)
         }
         startActivity(intent)
     }
