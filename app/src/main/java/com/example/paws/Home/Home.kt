@@ -25,7 +25,7 @@ class Home : AppCompatActivity() {
 
     //Esta instancia puede ir en una clase
     private val db= FirebaseFirestore.getInstance()
-    private var documentList=ArrayList<String>()
+    private var myPets=ArrayList<String>()
 
 
     lateinit var userEmail:String
@@ -38,11 +38,12 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        this.userEmail= intent.getStringExtra("email").toString()
 
         txvCerrarSesion=findViewById(R.id.textViewCerrarSesion)
         fbNewPet=findViewById(R.id.btnAddPet)
         lvPets=findViewById(R.id.listViewMascotas)
+
+        this.userEmail= intent.getStringExtra("email").toString()
 
         //
         val petsRef=db.collection("users").document(userEmail)
@@ -60,27 +61,24 @@ class Home : AppCompatActivity() {
 
     private fun myPets(petsRef: CollectionReference) {
 
-        //documentList.clear()
-        //Aca se muestran las moscotas que se tiene
-        petsRef.get()
-            .addOnCompleteListener(OnCompleteListener <QuerySnapshot> { task ->
-                if (task.isSuccessful){
-                    for (doc in task.result!!){
-                        val docId=doc.id
-                        this.documentList.add(docId)
-                        Log.i("TAG_INFO", "${documentList}")
-                    }
+        Log.i("CORREO DEL USUARIO", "${userEmail}")
 
-                    val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,documentList)
-                    this.lvPets.adapter=adapter
-                }
-            })
-        lvPets.setOnItemClickListener { parent, view, position, id ->
-            val intent:Intent=Intent(this,HomePerfilMascota::class.java).apply {
-                putExtra("email",userEmail)
-                putExtra("petName",documentList[position])
+        petsRef.get().addOnSuccessListener { documentos->
+            for (doc in documentos){
+                myPets.add(doc.id)
             }
-            startActivity(intent)
+            Log.i("TAG_INFO", "${myPets}")
+            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, myPets)
+            lvPets.adapter=adapter
+
+            //click en la lista
+            lvPets.setOnItemClickListener { parent, view, position, id ->
+                    val intent:Intent=Intent(this,HomePerfilMascota::class.java).apply {
+                        putExtra("email",userEmail)
+                        putExtra("petName",myPets[position])
+                    }
+                    startActivity(intent)
+                }
         }
     }
 
@@ -107,11 +105,15 @@ class Home : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        //Log.i("TAG_INFO", "En el estar")
-        //val petsRef=db.collection("users").document(userEmail)
-        //    .collection("pets")
-        //myPets(petsRef)
+        this.userEmail= intent.getStringExtra("email").toString()
+    }
 
+    override fun onRestart() {
+        super.onRestart()
+
+        val petsRef=db.collection("users").document(userEmail)
+            .collection("pets")
+        myPets(petsRef)
     }
 
     override fun onResume() {

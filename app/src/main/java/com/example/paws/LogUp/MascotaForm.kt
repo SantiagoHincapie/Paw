@@ -69,7 +69,7 @@ class MascotaForm : AppCompatActivity() {
 
         addPet(petName,petType,0,"","","")
         val intent:Intent=Intent(this,Home::class.java).apply {
-
+            putExtra("email",emailUser)
         }
         startActivity(intent)
         finish()
