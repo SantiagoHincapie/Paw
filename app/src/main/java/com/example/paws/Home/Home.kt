@@ -38,12 +38,17 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
         this.userEmail= intent.getStringExtra("email").toString()
+
         txvCerrarSesion=findViewById(R.id.textViewCerrarSesion)
         fbNewPet=findViewById(R.id.btnAddPet)
         lvPets=findViewById(R.id.listViewMascotas)
 
+        //
+        val petsRef=db.collection("users").document(userEmail)
+            .collection("pets")
+        myPets(petsRef)
+        //
         txvCerrarSesion.setOnClickListener {
             cerrarSesion()
         }
@@ -54,16 +59,16 @@ class Home : AppCompatActivity() {
     }
 
     private fun myPets(petsRef: CollectionReference) {
-        documentList.clear()
+
+        //documentList.clear()
         //Aca se muestran las moscotas que se tiene
         petsRef.get()
             .addOnCompleteListener(OnCompleteListener <QuerySnapshot> { task ->
                 if (task.isSuccessful){
-
-
                     for (doc in task.result!!){
                         val docId=doc.id
                         this.documentList.add(docId)
+                        Log.i("TAG_INFO", "${documentList}")
                     }
 
                     val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,documentList)
@@ -72,23 +77,22 @@ class Home : AppCompatActivity() {
             })
         lvPets.setOnItemClickListener { parent, view, position, id ->
             val intent:Intent=Intent(this,HomePerfilMascota::class.java).apply {
-                putExtra("userEmail",userEmail)
+                putExtra("email",userEmail)
                 putExtra("petName",documentList[position])
             }
             startActivity(intent)
-            finish()
         }
     }
 
     private fun newPet() {
-        var intent:Intent=Intent(this,MascotaForm::class.java)
+        var intent:Intent=Intent(this,MascotaForm::class.java).apply {
+            putExtra("email",userEmail)
+        }
         startActivity(intent)
-        //finish()
     }
 
     private fun cerrarSesion(){
         showAlert()
-
     }
     private fun showAlert() {
         val builder= AlertDialog.Builder(this)
@@ -103,33 +107,26 @@ class Home : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.i("TAG_INFO", "En el estar")
+        //Log.i("TAG_INFO", "En el estar")
+        //val petsRef=db.collection("users").document(userEmail)
+        //    .collection("pets")
+        //myPets(petsRef)
 
     }
 
     override fun onResume() {
         super.onResume()
         Log.i("TAG_INFO", "En el resume")
-
-        val petsRef=db.collection("users").document(userEmail)
-            .collection("pets")
-        myPets(petsRef)
-
     }
 
     override fun onPause() {
         super.onPause()
-        Log.i("TAG_INFO", "En el pause")
+        Log.i("TAG_INFO", "En el onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.i("TAG_INFO", "En el stop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("TAG_INFO", "En el destroy")
+        Log.i("TAG_INFO", "En el onStop")
     }
 
 

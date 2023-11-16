@@ -18,7 +18,9 @@ import com.google.firebase.firestore.FirebaseFirestore
     lateinit var edtPersonality:EditText
     lateinit var edtConcentrado:EditText
     lateinit var btnAddPet:Button
+
     lateinit var emailUser:String
+    lateinit var petName:String
 
     private val db= FirebaseFirestore.getInstance()
 
@@ -33,6 +35,7 @@ import com.google.firebase.firestore.FirebaseFirestore
         btnAddPet=findViewById(R.id.btnAddPetEspecifications)
 
         emailUser=intent.getStringExtra("emailUser").toString()
+
 
         btnAddPet.setOnClickListener {
             newPet()

@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import com.example.paws.LogUp.LogUpEspecificaciones
 import com.example.paws.R
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
+
+    private val db= FirebaseFirestore.getInstance()
 
     lateinit var userEmail:String
     lateinit var petName:String
@@ -23,6 +28,7 @@ class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
     lateinit var btnUltimaVisita:Button
     lateinit var btnVacunas:Button
     lateinit var btnHistorial:Button
+    lateinit var txvEditar:TextView
 
     //TODO:el button de agregar
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +45,13 @@ class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
         txvEdad=findViewById(R.id.txvEdad)
         txvRaza=findViewById(R.id.txvRaza)
         txvPersonalidad=findViewById(R.id.txvPersonalidad)
-        txvPersonalidad=findViewById(R.id.txvConcentrado)
+        txvConcentrado=findViewById(R.id.txvConcentrado)
+        txvEditar=findViewById(R.id.txvEditarEspecificaciones)
+
+        btnUltimaVisita=findViewById(R.id.buttonUltimaVisita)
+        btnVacunas=findViewById(R.id.buttonVacunas)
+        btnHistorial=findViewById(R.id.buttonHistorialCompleto)
+
 
         especificaciones()
 
@@ -52,11 +64,36 @@ class HomeHistorialClinicoAndJorneys : AppCompatActivity() {
         btnHistorial.setOnClickListener {
             historial()
         }
+        txvEditar.setOnClickListener {
+            editarEspecificaciones()
+        }
+    }
 
+    private fun editarEspecificaciones() {
+
+        //TODO:
+        val intent=Intent(this,LogUpEspecificaciones::class.java).apply {
+            putExtra("petName",petName)
+            putExtra("emailUser",userEmail)
+        }
+        startActivity(intent)
     }
 
     private fun especificaciones() {
-        //TODO: aca va la peticion get que se realiza a las especificaciones de la mascota
+        txvTituloPagina.text=titulo
+        txvPetName.text=petName
+
+        val petRef=db.collection("users").document(userEmail)
+            .collection("pets").document(petName).get().addOnSuccessListener {
+                txvEdad.text="Edad: "+ it.get("petAge").toString()
+                txvRaza.text="Raza: "+it.get("petRace").toString()
+                txvPersonalidad.text="Personalidad: "+it.get("petPersonality").toString()
+                txvConcentrado.text="Concentrado: "+it.get("concentrado").toString()
+                if (txvEdad.text=="0"||txvRaza.length()==0||txvPersonalidad.length()==0||txvConcentrado.length()==0){
+                    Toast.makeText(this, "Especificaciones incompletas", Toast.LENGTH_LONG).show()
+                }
+            }
+
     }
 
     private fun historial() {

@@ -13,4 +13,9 @@
         <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.Paws</item>
     </style>
+
+    <style name="custom_floatings_buttons">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/main_orange</item>
+    </style>
 </resources>

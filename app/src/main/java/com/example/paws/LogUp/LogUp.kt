@@ -13,6 +13,7 @@ import com.example.paws.DataBase.EspecificacionMascota
 import com.example.paws.DataBase.Pet
 import com.example.paws.DataBase.Usuario
 import com.example.paws.Home.Home
+import com.example.paws.LogIn.LogIn
 import com.example.paws.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -61,9 +62,7 @@ import com.google.firebase.firestore.FirebaseFirestore
                 .createUserWithEmailAndPassword(emailUsuario,contrasenia)
                 .addOnCompleteListener {
                     if (it.isSuccessful){
-                        //Guardar en la bd
-                        db.collection("users").document(emailUsuario)
-                        showHome(it.result?.user?.email?:"")
+                        showHome()
                     }
                     else{
                         showAlert()
@@ -72,11 +71,9 @@ import com.google.firebase.firestore.FirebaseFirestore
             }
         }
 
-     private fun showHome(email:String) {
+     private fun showHome() {
 
-         val homeIntent=Intent(this,Home::class.java).apply {
-             putExtra("email",email)
-         }
+         val homeIntent=Intent(this,LogIn::class.java)
          startActivity(homeIntent)
      }
 

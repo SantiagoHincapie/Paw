@@ -3,6 +3,7 @@ package com.example.paws.LogUp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -85,6 +86,11 @@ class MascotaForm : AppCompatActivity() {
                     "concentrado" to concentrado
                 )
             )
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("TAG_INFO", "En el onStop")
     }
 
 }
